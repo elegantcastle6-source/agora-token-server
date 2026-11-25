@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   if (req.method === "OPTIONS") return res.status(200).end();
 
   const appId = process.env.AGORA_APP_ID;
-  const cert = process.env.AGORA_APP_CERT;
+ const cert = process.env.AGORA_APP_CERT || process.env.AGORA_APP_CERTIFICATE;
   if (!appId || !cert) return res.status(500).json({ error: "env missing" });
 
   const channel = req.query.channel;
